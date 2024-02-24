@@ -1,0 +1,6 @@
+ott (0.33-1) UNRELEASED; urgency=low
+
+  * Initial release. Closes: #nnnn
+    <nnnn is the bug number of your ITP>
+
+ -- Bo YU <tsu.yubo@gmail.com>  Sat, 24 Feb 2024 23:42:02 +0800

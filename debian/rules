@@ -1,0 +1,35 @@
+#!/usr/bin/make -f
+# You must remove unused comment lines for the released package.
+export DH_VERBOSE = 1
+
+include /usr/share/ocaml/ocamlvars.mk
+
+DESTDIR=$(CURDIR)/debian/tmp
+
+
+%:
+	dh $@
+
+override_dh_auto_clean: 
+	dh_auto_clean
+	if [ -f $(CURDIR)/src/.depend ]; then \
+		rm -rf $(CURDIR)/src/.depend; \
+	fi
+
+override_dh_auto_build:
+	make world
+	#make world && make ott.install
+
+# doc need to update if upstream to Debian
+execute_before_dh_auto_install:
+	cp -r $(CURDIR)/bin $(DESTDIR)/
+	cp $(CURDIR)/built_doc/*.png $(DESTDIR) 
+	cp $(CURDIR)/built_doc/*.html $(DESTDIR)
+	cp $(CURDIR)/built_doc/*.pdf $(DESTDIR)
+	cp $(CURDIR)/emacs/ott-mode.el $(DESTDIR)
+	cp $(CURDIR)/menhir/menhir_library_extra.mly $(DESTDIR)
+	cp $(CURDIR)/tex/ottlayout.sty $(DESTDIR)
+
+
+override_dh_auto_install:
+	dh_auto_install

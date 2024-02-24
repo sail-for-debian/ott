@@ -1,0 +1,4 @@
+debian/tmp/ott usr/bin
+debian/tmp/ott-mode.el usr/share/emacs/site-lisp/
+debian/tmp/ottlayout.sty usr/share/tex/
+debian/tmp/menhir_library_extra.mly usr/share/ott/
